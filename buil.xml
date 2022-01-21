@@ -1,0 +1,27 @@
+<?xml version="1.0" ?> 
+<project name="HelloWorld" default="compress">
+
+	<target name="init">
+		<mkdir dir="classes" />
+		<mkdir dir="jarfiles" />
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="src" destdir="classes" />
+	</target>
+	
+	<target name="compress" depends="compile">
+	        <jar destfile="jarfiles/Devops.jar" basedir="classes" />
+	</target>
+	
+	<target name="execute" depends="compile">
+		<java classname="com.vaannila.helloworld.HelloWorld" classpath="classes" />
+	</target>
+
+	<target name="clean">
+		<delete dir="classes" />
+		<delete dir="jarfiles" />
+	</target>
+	
+</project>
+
